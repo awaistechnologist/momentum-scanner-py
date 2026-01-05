@@ -132,35 +132,42 @@ class TelegramBot:
         Returns:
             Formatted message with MarkdownV2
         """
+        # Helper to format and escape
+        def fmt_num(n, prec=2):
+            return self.escape_markdown(f"{n:.{prec}f}")
+
         # Build message
         symbol = self.escape_markdown(signal.symbol)
-        price = signal.price
-        score = signal.score
-        signals_hit = self.escape_markdown(", ".join(signal.signals_hit[:3]))  # Top 3 signals
+        price = fmt_num(signal.price)
+        score = fmt_num(signal.score, 1)
+        
+        # Escape signals list
+        safe_signals = [self.escape_markdown(s) for s in signal.signals_hit[:3]]
+        signals_hit = self.escape_markdown(", ").join(safe_signals)
 
-        msg = f"*{symbol}* @ {price:.2f}\n"
-        msg += f"📊 Score: *{score:.1f}*\n"
+        msg = f"*{symbol}* @ {price}\n"
+        msg += f"📊 Score: *{score}*\n"
         msg += f"✅ {signals_hit}\n"
 
         # RSI
         if signal.rsi:
-            msg += f"RSI: {signal.rsi:.1f} "
+            msg += f"RSI: {fmt_num(signal.rsi, 1)} "
 
         # Volume
         if signal.current_volume and signal.volume_avg_20:
             vol_ratio = signal.current_volume / signal.volume_avg_20
-            msg += f"Vol: {vol_ratio:.1f}x\n"
+            msg += f"Vol: {fmt_num(vol_ratio, 1)}x\n"
         else:
             msg += "\n"
 
         # Entry/Stop/Target
         if signal.suggested_entry and signal.suggested_stop and signal.suggested_target:
-            msg += f"🎯 Entry: {signal.suggested_entry:.2f}\n"
-            msg += f"🛑 Stop: {signal.suggested_stop:.2f}\n"
-            msg += f"💰 Target: {signal.suggested_target:.2f}\n"
+            msg += f"🎯 Entry: {fmt_num(signal.suggested_entry)}\n"
+            msg += f"🛑 Stop: {fmt_num(signal.suggested_stop)}\n"
+            msg += f"💰 Target: {fmt_num(signal.suggested_target)}\n"
 
             if signal.risk_reward:
-                msg += f"R/R: {signal.risk_reward:.1f}\n"
+                msg += f"R/R: {fmt_num(signal.risk_reward, 1)}\n"
 
         return msg
 
@@ -218,6 +225,6 @@ class TelegramBot:
 
             for i, signal in enumerate(signals[:15], 1):
                 symbol = self.escape_markdown(signal.symbol)
-                msg += f"{i}\\. *{symbol}* \\- Score: {signal.score:.1f} \\- ${signal.price:.2f}\n"
+                msg += f"{i}\\. *{symbol}* \\- Score: {self.escape_markdown(f'{signal.score:.1f}')} \\- ${self.escape_markdown(f'{signal.price:.2f}')}\n"
 
         return self.send_message(msg)
