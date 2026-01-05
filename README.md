@@ -24,7 +24,7 @@
 ### 2. Installation
 ```bash
 # Clone the repository
-git clone https://github.com/awaistechnologist/kairos.git
+git clone https://github.com/awaistechnologist/kairos-momentum-scanner.git
 cd share-tracker
 
 # Run the setup script (creates venv, installs dependencies)

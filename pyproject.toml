@@ -49,8 +49,8 @@ kairos-cli = "scanner.modes.cli:main"
 kairos-worker = "scanner.modes.worker:main"
 
 [project.urls]
-Homepage = "https://github.com/awaistechnologist/kairos"
-Repository = "https://github.com/awaistechnologist/kairos"
+Homepage = "https://github.com/awaistechnologist/kairos-momentum-scanner"
+Repository = "https://github.com/awaistechnologist/kairos-momentum-scanner"
 
 [tool.setuptools.packages.find]
 where = ["."]
