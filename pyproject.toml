@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "momentum-scanner"
-version = "1.0.0"
+version = "1.0.1"
 description = "Short-term momentum scanner for UK and US equities"
 readme = "README.md"
 requires-python = ">=3.10"
