@@ -14,10 +14,11 @@ The Momentum Scanner can send real-time alerts to your Telegram app. Here is how
 ## 2. Get Your Chat ID
 
 1.  Search for your new bot in Telegram and click **Start**.
-2.  Send a message (e.g., "Hello") to your bot.
-3.  Visit the following URL in your browser (replace `<YOUR_BOT_TOKEN>` with the token you just got):
+2.  **IMPORTANT:** Type and send a message (e.g., "Hello world") to your bot. **Do not skip this!**
+3.  **Immediately** visit the following URL in your browser (replace `<YOUR_BOT_TOKEN>` with the token you just got):
     `https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates`
-4.  Look for a JSON response. Find the `"chat"` object inside `"result"`.
+4.  If you see `{"ok":true,"result":[]}`, send another message to the bot and refresh the page.
+5.  Look for a JSON response. Find the `"chat"` object inside `"result"`.
 5.  The `id` number inside `"chat"` is your `chat_id` (e.g., `987654321`).
 
 ## 3. Configure the Scanner
