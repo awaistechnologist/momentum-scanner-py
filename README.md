@@ -205,6 +205,7 @@ Edit `config.json`:
 - **[Publishing Guide](docs/PUBLISH.md)** - How to safely publish to GitHub
 - **[Quick Start](docs/QUICKSTART.md)** - Installation & basic usage
 - **[UI Guide](docs/UI_GUIDE.md)** - Streamlit web interface guide
+- **[Telegram Setup](docs/TELEGRAM_SETUP.md)** - Enable mobile alerts
 
 ## Data Providers
 
