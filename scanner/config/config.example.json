@@ -1,0 +1,67 @@
+{
+  "timezone": "Europe/London",
+  "universe": {
+    "lists": [
+      "UK_LARGE_CAP",
+      "US_LIQUID_TECH"
+    ],
+    "custom_symbols": [
+      "ULVR.L",
+      "DGE.L",
+      "AAPL",
+      "MSFT"
+    ]
+  },
+  "data": {
+    "provider": "twelvedata",
+    "interval": "1d",
+    "lookback_days": 200,
+    "_comment": "API keys are loaded from .env file (FINNHUB_API_KEY, TWELVEDATA_API_KEY)"
+  },
+  "strategy": {
+    "rsi_min": 50,
+    "rsi_max": 65,
+    "ema_fast": 9,
+    "ema_slow": 21,
+    "sma_trend": 50,
+    "macd": {
+      "fast": 12,
+      "slow": 26,
+      "signal": 9
+    },
+    "volume_window": 20,
+    "adx_min": 0,
+    "weights": {
+      "ema": 25,
+      "rsi": 20,
+      "macd": 25,
+      "volume": 20,
+      "breakout": 10
+    },
+    "score_threshold": 60,
+    "top_n": 15
+  },
+  "risk": {
+    "atr_window": 14,
+    "tp_pct": 0.07,
+    "sl_atr_mult": 1.0
+  },
+  "notifications": {
+    "telegram": {
+      "enabled": false,
+      "_comment": "Bot token and chat ID are loaded from .env (TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID)"
+    }
+  },
+  "export": {
+    "csv_path": "./output/last_scan.csv",
+    "json_path": "./output/last_scan.json"
+  },
+  "scheduler": {
+    "enabled": false,
+    "run_time_local": "07:00"
+  },
+  "logging": {
+    "level": "INFO",
+    "path": "./logs/scanner.log"
+  }
+}

@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Scanner UI (Streamlit)
+  scanner-ui:
+    build:
+      context: ../..
+      dockerfile: scanner/deploy/Dockerfile
+    container_name: scanner-ui
+    command: streamlit run scanner/modes/ui_app.py --server.port=8501 --server.address=0.0.0.0
+    ports:
+      - "8501:8501"
+    volumes:
+      - ../../scanner:/app/scanner
+      - scanner-config:/etc/scanner
+      - scanner-logs:/var/log/scanner
+      - scanner-data:/var/lib/scanner
+    environment:
+      - FINNHUB_API_KEY=${FINNHUB_API_KEY}
+      - TWELVEDATA_API_KEY=${TWELVEDATA_API_KEY}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+    restart: unless-stopped
+
+  # Scanner Worker (scheduled scans)
+  scanner-worker:
+    build:
+      context: ../..
+      dockerfile: scanner/deploy/Dockerfile
+    container_name: scanner-worker
+    command: python -m scanner.modes.worker --config /etc/scanner/config.json
+    volumes:
+      - scanner-config:/etc/scanner
+      - scanner-logs:/var/log/scanner
+      - scanner-data:/var/lib/scanner
+    environment:
+      - FINNHUB_API_KEY=${FINNHUB_API_KEY}
+      - TWELVEDATA_API_KEY=${TWELVEDATA_API_KEY}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+    restart: on-failure
+    profiles:
+      - worker
+
+volumes:
+  scanner-config:
+  scanner-logs:
+  scanner-data:

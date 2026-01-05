@@ -1,0 +1,30 @@
+[Unit]
+Description=Momentum Scanner Background Worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=scanner
+Group=scanner
+WorkingDirectory=/opt/scanner
+ExecStart=/opt/scanner/venv/bin/python -m scanner.modes.worker --config /etc/scanner/config.json
+
+# Environment
+Environment="PYTHONUNBUFFERED=1"
+EnvironmentFile=-/etc/scanner/.env
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=momentum-scanner
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log/scanner /var/lib/scanner
+
+[Install]
+WantedBy=multi-user.target
