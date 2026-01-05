@@ -16,7 +16,7 @@ Thank you for your interest in contributing! This document provides guidelines f
 
 ```bash
 # Clone your fork
-git clone https://github.com/awaistechnologist/momentum-scanner-py.git
+git clone https://github.com/awaistechnologist/kairos.git
 cd share-tracker
 
 # Install dependencies

@@ -4,7 +4,7 @@
 set -e
 
 echo "======================================"
-echo "📈 Momentum Scanner Setup"
+echo "⏳ Kairos: Momentum Scanner Setup"
 echo "======================================"
 echo ""
 

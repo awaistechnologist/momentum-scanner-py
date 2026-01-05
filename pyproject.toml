@@ -3,16 +3,16 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "momentum-scanner"
+name = "kairos"
 version = "1.0.1"
-description = "Short-term momentum scanner for UK and US equities"
+description = "Kairos: The opportune moment for action. High-performance momentum scanner."
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
     {name = "Scanner Team"}
 ]
-keywords = ["trading", "scanner", "momentum", "technical-analysis", "stocks"]
+keywords = ["trading", "scanner", "momentum", "technical-analysis", "stocks", "kairos"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Financial and Insurance Industry",
@@ -45,12 +45,12 @@ dev = [
 ]
 
 [project.scripts]
-scanner-cli = "scanner.modes.cli:main"
-scanner-worker = "scanner.modes.worker:main"
+kairos-cli = "scanner.modes.cli:main"
+kairos-worker = "scanner.modes.worker:main"
 
 [project.urls]
-Homepage = "https://github.com/awaistechnologist/momentum-scanner-py"
-Repository = "https://github.com/awaistechnologist/momentum-scanner-py"
+Homepage = "https://github.com/awaistechnologist/kairos"
+Repository = "https://github.com/awaistechnologist/kairos"
 
 [tool.setuptools.packages.find]
 where = ["."]

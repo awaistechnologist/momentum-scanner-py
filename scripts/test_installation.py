@@ -118,7 +118,7 @@ def test_basic_functionality():
 def main():
     """Run all tests."""
     print("=" * 60)
-    print("📈 Momentum Scanner - Installation Test")
+    print("⏳ Kairos - Installation Test")
     print("=" * 60)
     print()
 

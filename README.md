@@ -1,6 +1,8 @@
-# Momentum Stock Scanner
+![Kairos Banner](docs/images/banner.png)
 
-High-performance momentum scanner for US stocks using technical analysis and batch API optimization.
+# KAIROS
+
+**The Opportune Moment.** High-performance momentum scanner for US stocks using impact-optimized timeframes.
 
 ## Features
 
@@ -22,7 +24,7 @@ High-performance momentum scanner for US stocks using technical analysis and bat
 ### 2. Installation
 ```bash
 # Clone the repository
-git clone https://github.com/awaistechnologist/momentum-scanner-py.git
+git clone https://github.com/awaistechnologist/kairos.git
 cd share-tracker
 
 # Run the setup script (creates venv, installs dependencies)
